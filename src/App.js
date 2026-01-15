@@ -10,13 +10,13 @@ function App() {
 
   const [step, setStep] = useState(1);
 
-function previous() {
+function handlePrevious() {
   if (step >1){
     setStep(step - 1);
   }
 }
 
-function next() {
+function handleNext() {
   if (step < messages.length){
     setStep(step + 1);
   }
@@ -30,8 +30,8 @@ function next() {
     </div>
     <p className="message">Step {step}: {messages[step - 1]}</p>
     <div className="buttons">
-      <button style={{backgroundColor:'#7950f2', color:'#fff'}} onClick={previous}>Previous</button>
-      <button style={{backgroundColor:'#7950f2', color:'#fff'}} onClick={next}>Next</button>
+      <button style={{backgroundColor:'#7950f2', color:'#fff'}} onClick={handlePrevious}>Previous</button>
+      <button style={{backgroundColor:'#7950f2', color:'#fff'}} onClick={handleNext}>Next</button>
       </div>
 
   </div>
