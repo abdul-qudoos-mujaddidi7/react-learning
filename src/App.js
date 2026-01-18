@@ -13,17 +13,17 @@ function App() {
 
 function handlePrevious() {
   if (step >1){
-    setStep(step - 1);
+    setStep((s)=> s - 1);
   }
 }
 
 function handleNext() {
   if (step < messages.length){
-    setStep(step + 1);
+    setStep((s)=> s + 1);
   }
 }
   return <div>
-    <button className="close" onClick={() => setIsOpen(!isOpen)}>×</button>
+    <button className="close" onClick={() => setIsOpen((is) => !is)}>×</button>
 
    {isOpen && <div className="steps" >
     <div className="numbers">
