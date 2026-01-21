@@ -14,7 +14,7 @@ export default function App() {
 }
 
 function Logo() {
-  return <h1>🌴 Far Away Travel 🧳</h1>;
+  return <h1>🌴Far Away Travel 🧳</h1>;
 }
 
 function Form({ items, setItems }) {
