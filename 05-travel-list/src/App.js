@@ -60,13 +60,33 @@ function Form({ items, setItems }) {
 }
 
 function PackingList({ items, setItems }) {
+  const [sortBy, setSortBy] = useState("input");
+  let sortedItems;
+
+  if (sortBy === "input") sortedItems = items;
+
+  if(sortBy === "description"){
+    sortedItems=items.slice().sort((a,b)=>a.description.localeCompare(b.description))
+  }
+
+  if(sortBy === "picked"){
+    sortedItems=items.slice().sort((a,b)=>Number(a.picked) - Number(b.picked))
+  }
+
   return (
     <div className="list">
       <ul>
-        {items.map((item) => (
+        {sortedItems.map((item) => (
           <Item key={item.id} item={item} items={items} setItems={setItems} />
         ))}
       </ul>
+      <div className="actions" >
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="input">Input order</option>
+          <option value="description">Description</option>
+          <option value="picked">Picked status</option>
+        </select>
+      </div>
     </div>
   );
 }
@@ -102,6 +122,10 @@ function Item({ item, items, setItems }) {
 }
 
 function Stats({ items }) {
+  if (!items.length)
+    return(
+  <p className="stats"><em>Start adding some Item to your packing list🚀</em></p>
+  )
   const total = items.length;
   const picked = items.filter((item) => item.picked).length;
   const percentage =
