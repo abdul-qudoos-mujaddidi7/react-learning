@@ -86,6 +86,7 @@ function PackingList({ items, setItems }) {
           <option value="description">Description</option>
           <option value="picked">Picked status</option>
         </select>
+        <button onClick={()=> setItems([])}>Clear List</button>
       </div>
     </div>
   );
