@@ -38,24 +38,27 @@ function handleNext() {
       <div className={ `${step >= 3 ? "active" : ""}`} >3</div>
       
     </div>
-    <p className="message">Step {step}: {messages[step - 1]}</p>
+    <StepMessage step={step}>{messages[step - 1]}</StepMessage>
     <div className="buttons">
       <Button bgColor='#7950f2' textColor='#fff' onClick={handlePrevious}>Previous</Button>
-
-
-
       <Button bgColor='#7950f2' textColor='#fff' onClick={handleNext}>Next</Button>
       </div>
-
   </div>
   }
   </div>
 
 }
 
+function StepMessage({step,children}){
+  return <div className="message">
+          <h3>Step {step}</h3> 
+          {children}</div>
+}
+
 function Button({textColor,bgColor,onClick,children}){
   console.log(children)
-  return <button style={{backgroundColor:bgColor, color:textColor}} onClick={onClick}>{children}</button>
+  return <button style={{backgroundColor:bgColor, color:textColor}} onClick={onClick}>
+        {children}</button>
 
 }
 
