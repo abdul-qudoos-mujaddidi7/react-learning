@@ -11,17 +11,21 @@ const startContainerStyle = {
   gap: "4px",
 };
 
-const textStyle = {
-  lineHeight: "1",
-  margine: "0",
-};
 
-export default function StarRating({maxRating =5}) {
+
+export default function StarRating({maxRating =5, size=48, color='#FFEA00', message=[]}) {
     const [rating, setRating]=useState(0)
     const [temp, setTemRating]=useState(0)
      function handleRating(rating){
         setRating(rating)
     }
+
+    const textStyle = {
+  lineHeight: "1",
+  margine: "0",
+  color,
+  fontSize: `${size / 1.5}px`
+};
   return (
     <div style={containerStyle}>
       <div style={startContainerStyle}>
@@ -30,7 +34,7 @@ export default function StarRating({maxRating =5}) {
           
         ))}
       </div>
-      <div style={textStyle}>{ temp|| rating ||""}</div>
+      <div style={textStyle}>{message.length===maxRating ? message[temp? temp-1:rating-1] : temp|| rating ||""}</div>
     </div>
   );
 }
