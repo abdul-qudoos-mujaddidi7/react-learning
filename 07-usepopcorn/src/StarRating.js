@@ -13,11 +13,12 @@ const startContainerStyle = {
 
 
 
-export default function StarRating({maxRating =5, size=48, color='#FFEA00', message=[]}) {
+export default function StarRating({maxRating =5, size=48, color='#FFEA00', message=[], onSetRating}){
     const [rating, setRating]=useState(0)
     const [temp, setTemRating]=useState(0)
      function handleRating(rating){
         setRating(rating)
+        onSetRating(rating)
     }
 
     const textStyle = {
